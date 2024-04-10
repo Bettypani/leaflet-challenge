@@ -12,11 +12,10 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Load the GeoJSON data.
 let geoData = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
-// Perform a GET request to the query URL/
+// Perform a GET request to the query URL
 d3.json(geoData).then(function (data) {
-    // Once we get a response, send the data.features object to the createFeatures function.
     
-
+//Conditionals for color according to depth of earthquake
     function getColor(depth){
         if (depth > 90){
             return "#FF0000";
@@ -38,6 +37,7 @@ d3.json(geoData).then(function (data) {
          }
      }
 
+  //Function to adjust maker size to magnitude
     function getRadius(magnitude)
     {
         if (magnitude == 0){
@@ -58,7 +58,7 @@ d3.json(geoData).then(function (data) {
 
 
 
-  // Create a new choropleth layer.
+ //Create marker 
   L.geoJson(data, {
 
   pointToLayer: function (feature, latlng){
@@ -79,14 +79,14 @@ let legend = L.control({
    position: "bottomright"
 });
 
-
+//Create legend
 legend.onAdd = function() {
     let div = L.DomUtil.create('div', 'info legend'),
         limits = [-10, 10, 30, 50, 70, 90],
         colors = ["#CBECA5", "#7CFC00", "#228B22", "#FFFF00", "#ffa500", "#FF0000"],
         labels = [];
 
-    // Generate a label with a colored square for each interval
+    // Adding to html
     for (let i = 0; i < limits.length; i++) {
         div.innerHTML +=
             '<i style="background:' + colors[i] + '; width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7;"></i> ' +
