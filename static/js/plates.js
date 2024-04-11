@@ -8,6 +8,7 @@ let satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/se
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 });
 
+// Define the tile layer for the outdoor map
 let outdoorsLayer = L.tileLayer('https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.{ext}', {
 	minZoom: 0,
 	maxZoom: 20,
